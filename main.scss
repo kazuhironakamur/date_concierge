@@ -6,13 +6,15 @@ $theme-colors: (
     "light": #ff5778,
 );
 
+//@import "./bootstrap-4.3.1/scss/bootstrap.scss";
+
 @import "./bootstrap-4.3.1/scss/functions";
 @import "./bootstrap-4.3.1/scss/variables";
 @import "./bootstrap-4.3.1/scss/mixins";
 
 //@import "./bootstrap-4.3.1/scss/root";
 @import "./bootstrap-4.3.1/scss/reboot";
-//@import "./bootstrap-4.3.1/scss/type";
+@import "./bootstrap-4.3.1/scss/type";
 //@import "./bootstrap-4.3.1/scss/images";
 //@import "./bootstrap-4.3.1/scss/code";
 @import "./bootstrap-4.3.1/scss/grid";
@@ -31,7 +33,7 @@ $theme-colors: (
 //@import "./bootstrap-4.3.1/scss/pagination";
 //@import "./bootstrap-4.3.1/scss/badge";
 @import "./bootstrap-4.3.1/scss/jumbotron";
-//@import "./bootstrap-4.3.1/scss/alert";
+@import "./bootstrap-4.3.1/scss/alert";
 //@import "./bootstrap-4.3.1/scss/progress";
 @import "./bootstrap-4.3.1/scss/media";
 //@import "./bootstrap-4.3.1/scss/list-group";
