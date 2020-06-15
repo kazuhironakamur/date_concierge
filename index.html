@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-189255038-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-189255038-1');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Concierge</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="dateconcierge.css".css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid">
+            <h1>
+                <span class="text-light">Date Concierge</span>
+            </h1>
+
+            <div class="row justify-content-end">
+                <form class="col-sm-10">
+                    <div class="form-group row">
+                        <label for="main_plan" class="col-md-4 col-form-label">
+                            <span class="bg-dark text-light rounded-pill pl-3 pr-3">本日のメイン</span>
+                        </label>
+                        <div class="col-md-8">
+                            <input id="main_plan" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label for="lunch_plan" class="col-md-4 col-form-label">
+                            <span class="bg-dark text-light rounded-pill pl-3 pr-3">お昼ごはん</span>
+                        </label>
+                        <div class="col-md-8">
+                            <input id="lunch_plan" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label for="dinner_plan" class="col-md-4 col-form-label">
+                            <span class="bg-dark text-light rounded-pill pl-3 pr-3">夜ごはん</span>
+                        </label>
+                        <div class="col-md-8">
+                            <input id="dinner_plan" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label for="tea_plan" class="col-md-4 col-form-label">
+                            <span class="bg-dark text-light rounded-pill pl-3 pr-3">お茶をするなら</span>
+                        </label>
+                        <div class="col-md-8">
+                            <input id="tea_plan" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label for="alcohol_plan" class="col-md-4 col-form-label">
+                            <span class="bg-dark text-light rounded-pill pl-3 pr-3">お酒を飲むなら</span>
+                        </label>
+                        <div class="col-md-8">
+                            <input id="alcohol_plan" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div id="replan" class="btn btn-primary col-6 mx-auto">
+                            <i class="fas fa-concierge-bell pr-3"></i>コンシェルジュを呼ぶ
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div> <!-- container -->
+
+        <div class="nav navbar bg-dark text-info">
+            Copyright © 2020 Kazuhiro Nakamura.
+        </div>
+
+    </div><!-- jumbotron -->
+
+</body>
+</html>
