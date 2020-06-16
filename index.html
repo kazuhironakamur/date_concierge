@@ -166,14 +166,14 @@
                     <div id="modify_spot_alert" class="alert alert-error d-none">
                     </div>
 
-                    <form id="modify_spot_form">
+                    <form id="search_spot_form">
                         <div class="form-group row">
-                            <label for="modify_spot_genre" class="col-md-4 col-form-label">
+                            <label for="search_spot_genre" class="col-md-4 col-form-label">
                                 <span class="bg-dark text-light rounded-pill pl-3 pr-3">ジャンル</span>
                             </label>
 
                             <div class="col-md-8">
-                                <select class="form-control" id="modify_spot_genre">
+                                <select class="form-control" id="search_spot_genre">
                                     <option value="001">メイン</option>
                                     <option value="002">ランチ</option>
                                     <option value="003">ディナー</option>
@@ -184,11 +184,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="modify_spot_filter" class="col-md-4 col-form-label">
+                            <label for="search_spot_filter" class="col-md-4 col-form-label">
                                 <span class="bg-dark text-light rounded-pill pl-3 pr-3">フィルタ</span>
                             </label>
                             <div class="col-md-8">
-                                <input id="modify_spot_filter" type="text" class="form-control">
+                                <input id="search_spot_filter" type="text" class="form-control">
                             </div>
                         </div>
 
@@ -200,38 +200,13 @@
 
                     </form>
 
-                    <table class="table table-primary table-bordered table-striped">
+                    <table id="spot_table" class="table table-primary table-bordered table-striped">
                         <thead>
                             <th scope="col">#</th>
                             <th scope="col">name</th>
                             <th scope="col">action</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">001</th>
-                                <td>name</td>
-                                <td>
-                                    <a href=""><i class="fas fa-edit pr-3"></i>編集する</a>
-                                    <br>
-                                    <a href=""><i class="fas fa-trash-alt pr-3"></i>削除する</a>
-                                </td>
-                            </tr><tr>
-                                <th scope="row">001</th>
-                                <td>name</td>
-                                <td>
-                                    <a href=""><i class="fas fa-edit pr-3"></i>編集する</a>
-                                    <br>
-                                    <a href=""><i class="fas fa-trash-alt pr-3"></i>削除する</a>
-                                </td>
-                            </tr><tr>
-                                <th scope="row">001</th>
-                                <td>name</td>
-                                <td>
-                                    <a href=""><i class="fas fa-edit pr-3"></i>編集する</a>
-                                    <br>
-                                    <a href=""><i class="fas fa-trash-alt pr-3"></i>削除する</a>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

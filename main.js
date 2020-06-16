@@ -4,7 +4,7 @@ $(function() {
 
     $("#replan").click(function() {
         $("#replan").attr("disabled", "disabled");
-        console.log('call ajax.');
+
         $.ajax({
             type: "GET",
             url: URL + '/plan', 
@@ -59,6 +59,40 @@ $(function() {
                 console.log(res);
                 $('#new_spot_alert').text('新しいスポットを追加しました。');
                 $('#new_spot_alert').removeClass('d-none');
+            }
+        });
+    });
+
+    $('#search_spot').click(function() {
+        console.log('search spot.');
+
+        let genre_id = $('#search_spot_genre').val()
+        console.log(genre_id)
+
+        $.ajax({
+            type: "GET",
+            url: URL + '?genre_id=' + genre_id, 
+            dataType: "json",
+            error: function() {
+                console.log('ERROR!');
+            },
+            success: function(res) {
+                console.log('SUCCESS!');
+                console.log(res);
+                console.log(res.Items);
+
+                let html = res.Items.reduce((s, item) => {
+                    s += '<tr>'
+                    s += '<td>' + item.spot_id + '</td>'
+                    s += '<td>' + item.name + '</td>'
+                    s += '<td>'
+                    s += '<div id="edit_spot" for="' + item.spot_id + '" class="btn btn-primary mr-3"><i class="fas fa-edit pr-3"></i>編集</div>'
+                    s += '<div id="delete_spot" for="' + item.spot_id + '" class="btn btn-error"><i class="fas fa-trash-alt pr-3"></i>削除</div>'
+                    s += '</td>'
+                    s += '</tr>';
+                    return s
+                }, '');
+                $('#spot_table tbody').html(html);
             }
         });
     });
