@@ -48,8 +48,11 @@ $(function() {
             dataType: "json",
             data: JSON.stringify(data),
             contentType: 'application/json',
-            error: function() {
-                console.log('ERROR!');
+            error: function(xhr, status, error) {
+                var res = $.parseJSON(xhr.responseText);
+                console.log(res.message);
+                $('#new_spot_alert').text(res.message);
+                $('#new_spot_alert').removeClass('d-none');
             },
             success: function(res) {
                 console.log('SUCCESS!')
