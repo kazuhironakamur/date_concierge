@@ -146,7 +146,55 @@
 
                         <div class="form-group row">
                             <div id="new_spot" class="btn btn-primary col-6 mx-auto">
-                                <i class="fas fa-concierge-bell pr-3"></i>スポットを登録
+                                <i class="fa fa-building pr-3" aria-hidden="true"></i>スポットを登録
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div> <!-- row justify-content-end -->
+
+            <hr class="col-10 mt-5 mb-5">
+        
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                    <h2 class="text-dark">
+                        スポットを編集する
+                    </h2>
+
+                    <div id="modify_spot_alert" class="alert alert-error d-none">
+                    </div>
+
+                    <form id="modify_spot_form">
+                        <div class="form-group row">
+                            <label for="modify_spot_genre" class="col-md-4 col-form-label">
+                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">ジャンル</span>
+                            </label>
+
+                            <div class="col-md-8">
+                                <select class="form-control" id="modify_spot_genre">
+                                    <option value="001">メイン</option>
+                                    <option value="002">ランチ</option>
+                                    <option value="003">ディナー</option>
+                                    <option value="004">お茶</option>
+                                    <option value="005">お酒</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="modify_spot_filter" class="col-md-4 col-form-label">
+                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">フィルタ</span>
+                            </label>
+                            <div class="col-md-8">
+                                <input id="modify_spot_filter" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div id="new_spot" class="btn btn-primary col-6 mx-auto">
+                                <i class="fa fa-search pr-3" aria-hidden="true"></i></i>スポットを検索
                             </div>
                         </div>
 
