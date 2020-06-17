@@ -1,6 +1,36 @@
 $(function() {
 
     let URL = "https://i5iz16898f.execute-api.us-east-2.amazonaws.com/default/date_concierge";
+    
+    // スポットの削除を行う
+    function delete_spot(_event, _this) {
+        let spot_id = $(_this).parents('tr').attr('id');
+        console.log('delete spot: ' + spot_id);
+
+        let data = {
+            spot_id: spot_id
+        };
+
+        // DBから削除
+        $.ajax({
+            url: URL,
+            type: "DELETE",
+            dataType: "json",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            error: function(xhr, status, error) {
+                console.log('ERROR!');
+            },
+            success: function(res) {
+                console.log('SUCCESS!');
+            }
+        });
+        
+        // HTML上から削除
+        $(_this).parents('tr').remove();
+
+        return true;
+    };
 
     $("#replan").click(function() {
         $("#replan").attr("disabled", "disabled");
@@ -78,65 +108,37 @@ $(function() {
                 console.log('ERROR!');
             },
             success: function(res) {
-                console.log('SUCCESS!');
-                console.log(res);
                 console.log(res.Items);
+                $('#spot_table tbody').empty();
 
-                let html = res.Items.reduce((s, item) => {
-                    s += '<tr>'
-                    s += '<td>' + item.spot_id + '</td>'
-                    s += '<td>' + item.name + '</td>'
-                    s += '<td>'
-                    s += '<div id="edit_spot" accesskey="' + item.spot_id + '" class="btn btn-primary mr-3"><i class="fas fa-edit pr-3"></i>編集</div>'
-                    s += '<div id="delete_spot" accesskey="' + item.spot_id + '" class="btn btn-error"><i class="fas fa-trash-alt pr-3"></i>削除</div>'
-                    s += '</td>'
-                    s += '</tr>';
-                    return s
+                let spots_html = res.Items.reduce(function(ret, item) {
+                    return ret += '\
+                        <tr id="' + item.spot_id + '">\
+                            <td>' + item.spot_id + '</td>\
+                            <td>' + item.name + '</td>\
+                            <td>\
+                                <input id="edit_spot" type="button" value="編集">\
+                                <input id="delete_spot" type="button" value="削除">\
+                            </td>\
+                        </tr>'
                 }, '');
-                $('#spot_table tbody').html(html);
 
+                console.log(spots_html);
+
+                $('#spot_table tbody').append(spots_html);
+
+                //------------------------------------------------
+                // 追加したボタンをeventバインド処理
+                //------------------------------------------------
                 // スポット編集イベント
                 $(document).on("click", "#edit_spot", function() {
                     console.log('edit spot.');
-
-                    let spot_id = $(this)[0].accessKey;
-                    console.log(spot_id);
+                    console.log($(this).parents('tr').attr('id'));
                 });
 
                 // スポット削除イベント
-                $(document).on('click', '#delete_spot', function() {
-                    console.log('delete spot.');
-
-                    let spot_id = $(this)[0].accessKey;
-                    console.log(spot_id);
-
-                    if (confirm('本当に削除しますか？')) {
-                        console.log('delete!');
-
-                        let data = {
-                            spot_id: spot_id
-                        };
-
-                        console.log(data);
-
-                        $.ajax({
-                            url: URL,
-                            type: "DELETE",
-                            dataType: "json",
-                            data: JSON.stringify(data),
-                            contentType: 'application/json',
-                            error: function(xhr, status, error) {
-                                console.log('ERROR!');
-                            },
-                            success: function(res) {
-                                console.log('SUCCESS!');
-                            }
-                        });
-                        return true;
-                    }
-                    else {
-                        return false;
-                    }
+                $(document).on("click", "#delete_spot", function(event) {
+                    delete_spot(event, this);
                 });
             }
         });
