@@ -67,11 +67,12 @@ $(function() {
         console.log('search spot.');
 
         let genre_id = $('#search_spot_genre').val()
-        console.log(genre_id)
+        let filter = $('#search_spot_filter').val()
+        console.log(genre_id, filter)
 
         $.ajax({
             type: "GET",
-            url: URL + '?genre_id=' + genre_id, 
+            url: URL + '?genre_id=' + genre_id + '&filter=' + filter, 
             dataType: "json",
             error: function() {
                 console.log('ERROR!');
