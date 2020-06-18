@@ -2,6 +2,12 @@ $(function() {
 
     let URL = "https://i5iz16898f.execute-api.us-east-2.amazonaws.com/default/date_concierge";
     
+    // スポットの編集フォームを表示する
+    function display_spot_form(_event, _this) {
+        console.log('display spot form.');
+        console.log($(_this).parents('tr').attr('id'));
+    };
+
     // スポットの削除を行う
     function delete_spot(_event, _this) {
         let spot_id = $(_this).parents('tr').attr('id');
@@ -117,8 +123,8 @@ $(function() {
                             <td>' + item.spot_id + '</td>\
                             <td>' + item.name + '</td>\
                             <td>\
-                                <input id="edit_spot" type="button" value="編集">\
-                                <input id="delete_spot" type="button" value="削除">\
+                                <input id="edit_spot" class="btn btn-primary" type="button" value="編集">\
+                                <input id="delete_spot" class="btn btn-error" type="button" value="削除">\
                             </td>\
                         </tr>'
                 }, '');
@@ -131,9 +137,8 @@ $(function() {
                 // 追加したボタンをeventバインド処理
                 //------------------------------------------------
                 // スポット編集イベント
-                $(document).on("click", "#edit_spot", function() {
-                    console.log('edit spot.');
-                    console.log($(this).parents('tr').attr('id'));
+                $(document).on("click", "#edit_spot", function(event) {
+                    display_spot_form(event, this);
                 });
 
                 // スポット削除イベント
