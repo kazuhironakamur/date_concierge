@@ -3,9 +3,14 @@ $(function() {
     let URL = "https://i5iz16898f.execute-api.us-east-2.amazonaws.com/default/date_concierge";
     
     // スポットの編集フォームを表示する
-    function display_spot_form(_event, _this) {
-        console.log('display spot form.');
+    function edit_spot(_event, _this) {
+        console.log('edit spot.');
         console.log($(_this).parents('tr').attr('id'));
+
+        tr = $(_this).parents('tr');
+        name_td = $(tr).children('.name')[0];
+        $(name_td).children('span').addClass('d-none');
+        $(name_td).children('input').removeClass('d-none');
     };
 
     // スポットの削除を行う
@@ -120,9 +125,13 @@ $(function() {
                 let spots_html = res.Items.reduce(function(ret, item) {
                     return ret += '\
                         <tr id="' + item.spot_id + '">\
-                            <td>' + item.spot_id + '</td>\
-                            <td>' + item.name + '</td>\
-                            <td>\
+                            <td class="spot_id">' + item.spot_id + '</td>\
+                            <td class="name">\
+                                <span>' + item.name + '</span>\
+                                <input type="text" class="form-control d-none" value="' + item.name + '">\
+                                <input type="button" class="btn btn-primary d-none" value="登録">\
+                            </td>\
+                            <td class="actions">\
                                 <input id="edit_spot" class="btn btn-primary" type="button" value="編集">\
                                 <input id="delete_spot" class="btn btn-error" type="button" value="削除">\
                             </td>\
@@ -136,7 +145,12 @@ $(function() {
                 //------------------------------------------------
                 // スポット編集イベント
                 $(document).on("click", "#edit_spot", function(event) {
-                    display_spot_form(event, this);
+                    edit_spot(event, this);
+                });
+
+                // スポット登録イベント
+                $(document).on("click", "#modify_spot", function(event) {
+                    modify_spot(event, this);
                 });
 
                 // スポット削除イベント
