@@ -104,7 +104,7 @@ $(function() {
 
         let genre_id = $('#search_spot_genre').val()
         let filter = $('#search_spot_filter').val()
-        console.log(genre_id, filter)
+        console.log({'genre_id': genre_id, 'filter': filter})
 
         $.ajax({
             type: "GET",
@@ -114,7 +114,7 @@ $(function() {
                 console.log('ERROR!');
             },
             success: function(res) {
-                console.log(res.Items);
+                console.table(res.Items);
                 $('#spot_table tbody').empty();
 
                 let spots_html = res.Items.reduce(function(ret, item) {
@@ -128,8 +128,6 @@ $(function() {
                             </td>\
                         </tr>'
                 }, '');
-
-                console.log(spots_html);
 
                 $('#spot_table tbody').append(spots_html);
 
