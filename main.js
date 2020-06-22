@@ -12,6 +12,16 @@ $(function() {
         $(name_td).children('input').removeClass('d-none');
     };
 
+    // スポットの編集フォームをキャンセルする
+    function cancel_spot(_event, _this) {
+        console.log('cancel spot.');
+
+        tr = $(_this).parents('tr');
+        name_td = $(tr).children('.name')[0];
+        $(name_td).children('span').removeClass('d-none');
+        $(name_td).children('input').addClass('d-none');
+    };
+    
     // スポットの編集を反映する
     function modify_spot(_event, _this) {
         console.log('modify spot');
@@ -173,6 +183,7 @@ $(function() {
                                 <span>' + item.name + '</span>\
                                 <input type="text" class="form-control d-none" value="' + item.name + '">\
                                 <input id="modify_spot" type="button" class="btn btn-primary d-none" value="登録">\
+                                <input id="cancel_spot" type="button" class="btn btn-secondary d-none" value="キャンセル">\
                             </td>\
                             <td class="actions">\
                                 <input id="edit_spot" class="btn btn-primary" type="button" value="編集">\
@@ -191,6 +202,11 @@ $(function() {
                     edit_spot(event, this);
                 });
 
+                // スポットキャンセル(編集をやめる)イベント
+                $(document).on("click", "#cancel_spot", function(event) {
+                    cancel_spot(event, this);
+                });
+                
                 // スポット登録イベント
                 $(document).on("click", "#modify_spot", function(event) {
                     modify_spot(event, this);
