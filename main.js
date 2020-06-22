@@ -48,14 +48,14 @@ $(function() {
             error: function(xhr, status, error) {
                 var res = $.parseJSON(xhr.responseText);
                 console.log(res.message);
-                //$('#modify_spot_alert').text(res.message);
-                //$('#modify_spot_alert').removeClass('d-none');
+                $('#edit_spot_alert').text(res.message);
+                $('#edit_spot_alert').removeClass('d-none');
             },
             success: function(res) {
                 console.log('SUCCESS!');
                 console.log(res);
-                //$('#modify_spot_alert').text('スポットの変更を反映しました。');
-                //$('#modify_spot_alert').removeClass('d-none');
+                $('#edit_spot_alert').text('スポットの変更を反映しました。');
+                $('#edit_spot_alert').removeClass('d-none');
                 $(tr).children('.name').children('span').text(name);
             }
         });
