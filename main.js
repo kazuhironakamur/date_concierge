@@ -86,6 +86,8 @@ $(function() {
             },
             success: function(res) {
                 console.log('SUCCESS!');
+                $('#edit_spot_alert').text(res.message);
+                $('#edit_spot_alert').removeClass('d-none');
             }
         });
         
