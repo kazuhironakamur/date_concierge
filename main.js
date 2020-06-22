@@ -5,12 +5,54 @@ $(function() {
     // スポットの編集フォームを表示する
     function edit_spot(_event, _this) {
         console.log('edit spot.');
-        console.log($(_this).parents('tr').attr('id'));
 
         tr = $(_this).parents('tr');
         name_td = $(tr).children('.name')[0];
         $(name_td).children('span').addClass('d-none');
         $(name_td).children('input').removeClass('d-none');
+    };
+
+    // スポットの編集を反映する
+    function modify_spot(_event, _this) {
+        console.log('modify spot');
+
+        tr = $(_this).parents('tr');
+        spot_id = $(tr).children('.spot_id').children('span').text();
+        genre_id = $(tr).children('.genre_id').children('span').text();
+        name = $(tr).children('.name').children('input').val()
+
+        var data = {
+            spot_id:  spot_id,
+            genre_id: genre_id,
+            name:     name
+        };
+
+        console.table([data]);
+
+        $.ajax({
+            url: URL,
+            type: "PATCH",
+            dataType: "json",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            error: function(xhr, status, error) {
+                var res = $.parseJSON(xhr.responseText);
+                console.log(res.message);
+                //$('#modify_spot_alert').text(res.message);
+                //$('#modify_spot_alert').removeClass('d-none');
+            },
+            success: function(res) {
+                console.log('SUCCESS!');
+                console.log(res);
+                //$('#modify_spot_alert').text('スポットの変更を反映しました。');
+                //$('#modify_spot_alert').removeClass('d-none');
+                $(tr).children('.name').children('span').text(name);
+            }
+        });
+
+        name_td = $(tr).children('.name')[0];
+        $(name_td).children('span').removeClass('d-none');
+        $(name_td).children('input').addClass('d-none');
     };
 
     // スポットの削除を行う
@@ -125,11 +167,12 @@ $(function() {
                 let spots_html = res.Items.reduce(function(ret, item) {
                     return ret += '\
                         <tr id="' + item.spot_id + '">\
-                            <td class="spot_id">' + item.spot_id + '</td>\
+                            <td class="spot_id"><span>' + item.spot_id + '</span></td>\
+                            <td class="genre_id d-none"><span>' + item.genre_id + '<span></td>\
                             <td class="name">\
                                 <span>' + item.name + '</span>\
                                 <input type="text" class="form-control d-none" value="' + item.name + '">\
-                                <input type="button" class="btn btn-primary d-none" value="登録">\
+                                <input id="modify_spot" type="button" class="btn btn-primary d-none" value="登録">\
                             </td>\
                             <td class="actions">\
                                 <input id="edit_spot" class="btn btn-primary" type="button" value="編集">\
