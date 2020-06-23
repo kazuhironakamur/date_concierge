@@ -23,204 +23,237 @@
 </head>
 <body>
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid bg-primary">
         <div class="container">
             <h1 class="text-light">
                 Date Concierge
             </h1>
+            <div class="text-info">
+                このサイトはデートスポットをジャンルごとに登録し、ランダムで出力するサイトです。
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="text-info bg-dark rounded-pill px-3">
+            プランを提案
+        </h2>
+
+        <form id="plan_form">
+            
+            <div class="form-group row">
+                <label for="main_plan" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">本日のメイン</span>
+                </label>
+                <div class="col-md-8">
+                    <input id="main_plan" type="text" class="form-control" readonly>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="lunch_plan" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">お昼ごはん</span>
+                </label>
+                <div class="col-md-8">
+                    <input id="lunch_plan" type="text" class="form-control" readonly>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="dinner_plan" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">夜ごはん</span>
+                </label>
+                <div class="col-md-8">
+                    <input id="dinner_plan" type="text" class="form-control" readonly>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="tea_plan" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">お茶をするなら</span>
+                </label>
+                <div class="col-md-8">
+                    <input id="tea_plan" type="text" class="form-control" readonly>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="alcohol_plan" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">お酒を飲むなら</span>
+                </label>
+                <div class="col-md-8">
+                    <input id="alcohol_plan" type="text" class="form-control" readonly>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div id="replan" class="btn btn-primary col-6 mx-auto">
+                    <i class="fas fa-concierge-bell pr-3"></i>他の提案を受ける
+                </div>
+            </div>
+
+        </form>
+
+        <hr class="col-10 my-5">
+    
+        <h2 class="text-info bg-dark rounded-pill px-3">
+            スポットを追加する
+        </h2>
+
+        <div id="new_spot_alert" class="alert alert-error d-none">
         </div>
 
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-sm-10">
-                    <h2 class="text-info bg-dark rounded-pill px-3">
-                        プランを提案
-                    </h2>
-
-                    <form id="plan_form">
-                        
-                        <div class="form-group row">
-                            <label for="main_plan" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">本日のメイン</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input id="main_plan" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="lunch_plan" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">お昼ごはん</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input id="lunch_plan" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="dinner_plan" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">夜ごはん</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input id="dinner_plan" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="tea_plan" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">お茶をするなら</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input id="tea_plan" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="alcohol_plan" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">お酒を飲むなら</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input id="alcohol_plan" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div id="replan" class="btn btn-primary col-6 mx-auto">
-                                <i class="fas fa-concierge-bell pr-3"></i>他の提案を受ける
-                            </div>
-                        </div>
-
-                    </form>
+        <form id="new_spot_form">
+            
+            <div class="form-group row">
+                <label for="new_spot_id" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">ID</span>
+                </label>
+                <div class="col-md-8">
+                    <input id="new_spot_id" type="text" class="form-control">
                 </div>
-            </div> <!-- row justify-content-end -->
-
-        </div> <!-- container -->
-
-        <hr class="col-10 mt-5 mb-5">
-        
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-sm-10">
-                    <h2 class="text-info bg-dark rounded-pill px-3">
-                        スポットを追加する
-                    </h2>
-
-                    <div id="new_spot_alert" class="alert alert-error d-none">
-                    </div>
-
-                    <form id="new_spot_form">
-                        
-                        <div class="form-group row">
-                            <label for="new_spot_id" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">ID</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input id="new_spot_id" type="text" class="form-control">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="new_spot_name" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">名前</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input id="new_spot_name" type="text" class="form-control">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="new_spot_genre" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">ジャンル</span>
-                            </label>
-
-                            <div class="col-md-8">
-                                <select class="form-control" id="new_spot_genre">
-                                    <option value="001">メイン</option>
-                                    <option value="002">ランチ</option>
-                                    <option value="003">ディナー</option>
-                                    <option value="004">お茶</option>
-                                    <option value="005">お酒</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div id="new_spot" class="btn btn-primary col-6 mx-auto">
-                                <i class="fas fa-hotel pr-3"></i></i>スポットを登録
-                            </div>
-                        </div>
-
-                    </form>
+            </div>
+            
+            <div class="form-group row">
+                <label for="new_spot_name" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">名前</span>
+                </label>
+                <div class="col-md-8">
+                    <input id="new_spot_name" type="text" class="form-control">
                 </div>
-            </div> <!-- row justify-content-end -->
+            </div>
+            
+            <div class="form-group row">
+                <label for="new_spot_genre" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">ジャンル</span>
+                </label>
 
-            <hr class="col-10 mt-5 mb-5">
-        
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-sm-10">
-                    <h2 class="text-info bg-dark rounded-pill px-3">
-                        スポットを編集する
-                    </h2>
-
-                    <div id="edit_spot_alert" class="alert alert-error d-none">
-                    </div>
-
-                    <div id="modify_spot_alert" class="alert alert-error d-none">
-                    </div>
-
-                    <form id="search_spot_form">
-                        <div class="form-group row">
-                            <label for="search_spot_genre" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">ジャンル</span>
-                            </label>
-
-                            <div class="col-md-8">
-                                <select class="form-control" id="search_spot_genre">
-                                    <option value="001">メイン</option>
-                                    <option value="002">ランチ</option>
-                                    <option value="003">ディナー</option>
-                                    <option value="004">お茶</option>
-                                    <option value="005">お酒</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="search_spot_filter" class="col-md-4 col-form-label">
-                                <span class="bg-dark text-light rounded-pill pl-3 pr-3">フィルタ</span>
-                            </label>
-                            <div class="col-md-8">
-                                <input id="search_spot_filter" type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div id="search_spot" class="btn btn-primary col-6 mx-auto">
-                                <i class="fa fa-search pr-3" aria-hidden="true"></i></i>スポットを検索
-                            </div>
-                        </div>
-
-                    </form>
-
-                    <table id="spot_table" class="table table-primary table-bordered table-striped">
-                        <thead>
-                            <th scope="col">#</th>
-                            <th scope="col">name</th>
-                            <th scope="col">action</th>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                <div class="col-md-8">
+                    <select class="form-control" id="new_spot_genre">
+                        <option value="001">メイン</option>
+                        <option value="002">ランチ</option>
+                        <option value="003">ディナー</option>
+                        <option value="004">お茶</option>
+                        <option value="005">お酒</option>
+                    </select>
                 </div>
-            </div> <!-- row justify-content-end -->
+            </div>
+
+            <div class="form-group row">
+                <div id="new_spot" class="btn btn-primary col-6 mx-auto">
+                    <i class="fas fa-hotel pr-3"></i></i>スポットを登録
+                </div>
+            </div>
+
+        </form>
+
+        <hr class="col-10 my-5">
+    
+        <h2 class="text-info bg-dark rounded-pill px-3">
+            スポットを編集する
+        </h2>
+
+        <div id="edit_spot_alert" class="alert alert-error d-none">
         </div>
 
-        <div class="nav navbar bg-dark text-info">
-            Copyright © 2020 Kazuhiro Nakamura.
-        </div>
+        <form id="search_spot_form">
+            <div class="form-group row">
+                <label for="search_spot_genre" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">ジャンル</span>
+                </label>
 
-    </div><!-- jumbotron -->
+                <div class="col-md-8">
+                    <select class="form-control" id="search_spot_genre">
+                        <option value="001">メイン</option>
+                        <option value="002">ランチ</option>
+                        <option value="003">ディナー</option>
+                        <option value="004">お茶</option>
+                        <option value="005">お酒</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="search_spot_filter" class="col-md-4 col-form-label">
+                    <span class="bg-dark text-light rounded-pill pl-3 pr-3">フィルタ</span>
+                </label>
+                <div class="col-md-8">
+                    <input id="search_spot_filter" type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div id="search_spot" class="btn btn-primary col-6 mx-auto">
+                    <i class="fa fa-search pr-3" aria-hidden="true"></i></i>スポットを検索
+                </div>
+            </div>
+
+        </form>
+
+        <table id="spot_table" class="table table-primary table-bordered table-striped">
+            <thead>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">action</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <hr class="col-10 my-5">
+
+        <h2 class="text-info bg-dark rounded-pill px-3">
+            使用技術
+        </h2>
+
+        <div class="center-block">
+
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <th>フロントエンド</th>
+                        <td>
+                            <ul>
+                                <li>jQuery</li>
+                                <li>CSS</li>
+                                <li>Bootstrap</li>
+                                <li>S3</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>バックエンド</th>
+                        <td>
+                            <ul>
+                                <li>AWS Lambda</li>
+                                <li>Python</li>
+                                <li>AWS API Gateway</li>
+                                <li>AWS DynamoDB</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>開発環境</th>
+                        <td>
+                            <ul>
+                                <li>VS Code (フロントエンド)</li>
+                                <li>AWS Lambda (バックエンド)</li>
+                                <li>GitHub (フロントエンド)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div><!-- row -->
+
+    </div><!-- container -->
+
+    <div class="nav navbar bg-dark text-info">
+        Copyright © 2020 Kazuhiro Nakamura.
+    </div>
 
 </body>
 </html>
