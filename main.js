@@ -110,7 +110,13 @@ $(function() {
             },
             success: function(res) {
                 console.log('SUCCESS!');
-                console.log(res);
+                console.table({
+                    'main':    res['main'],
+                    'lunch':   res['lunch'],
+                    'dinner':  res['dinner'],
+                    'tea':     res['tea'],
+                    'alcohol': res['alcohol']
+                });
 
                 $('#main_plan').val(res['main']['name']);
                 $('#lunch_plan').val(res['lunch']['name']);
@@ -151,7 +157,7 @@ $(function() {
             },
             success: function(res) {
                 console.log('SUCCESS!');
-                console.log(res);
+                console.log(res.message);
                 $('#new_spot_alert').text('新しいスポットを追加しました。');
                 $('#new_spot_alert').removeClass('d-none');
             }
